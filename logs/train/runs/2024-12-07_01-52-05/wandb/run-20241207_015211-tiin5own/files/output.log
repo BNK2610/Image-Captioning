@@ -1,0 +1,516 @@
+[[36m2024-12-07 01:52:12,466[0m][[34m__main__[0m][[32mINFO[0m] - [rank: 0] Starting training![0m
+You are using a CUDA device ('NVIDIA GeForce RTX 3060') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Number of sequences in Train-Val-Test Dataset: 6473 809 809
+========== preprocessing train dataset ==========
+Embedding matrix: torch.Size([1741, 200])
+Max length of caption: 37
+Vocab size: 1741
+========== validation train dataset ==========
+Embedding matrix: torch.Size([1741, 200])
+Max length of caption: 37
+Vocab size: 1741
+========== test train dataset ==========
+Embedding matrix: torch.Size([1741, 200])
+Max length of caption: 37
+Vocab size: 1741
+Number of sequences in Train-Val-Test PreprocessedDataset: 6473 809 809
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┓
+┃[1;35m [0m[1;35m   [0m[1;35m [0m┃[1;35m [0m[1;35mName                                                                   [0m[1;35m [0m┃[1;35m [0m[1;35mType               [0m[1;35m [0m┃[1;35m [0m[1;35mParams[0m[1;35m [0m┃[1;35m [0m[1;35mMode [0m[1;35m [0m┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━┩
+│[2m [0m[2m0  [0m[2m [0m│ net                                                                     │ ImageCaptionNet     │ 44.4 M │ train │
+│[2m [0m[2m1  [0m[2m [0m│ net.text_embed_net                                                      │ Transformer         │ 18.3 M │ train │
+│[2m [0m[2m2  [0m[2m [0m│ net.text_embed_net.pos_encoder                                          │ PositionalEncoding  │      0 │ train │
+│[2m [0m[2m3  [0m[2m [0m│ net.text_embed_net.pos_encoder.dropout                                  │ Dropout             │      0 │ train │
+│[2m [0m[2m4  [0m[2m [0m│ net.text_embed_net.embedding                                            │ Embedding           │  445 K │ train │
+│[2m [0m[2m5  [0m[2m [0m│ net.text_embed_net.transformer                                          │ Transformer         │ 17.4 M │ train │
+│[2m [0m[2m6  [0m[2m [0m│ net.text_embed_net.transformer.encoder                                  │ TransformerEncoder  │  7.9 M │ train │
+│[2m [0m[2m7  [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers                           │ ModuleList          │  7.9 M │ train │
+│[2m [0m[2m8  [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m9  [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m10 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m11 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m12 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m13 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m14 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m15 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m16 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m17 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.0.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m18 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m19 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m20 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m21 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m22 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m23 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m24 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m25 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m26 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m27 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.1.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m28 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m29 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m30 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m31 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m32 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m33 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m34 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m35 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m36 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m37 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.2.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m38 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m39 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m40 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m41 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m42 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m43 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m44 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m45 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m46 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m47 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.3.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m48 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m49 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m50 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m51 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m52 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m53 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m54 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m55 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m56 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m57 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.4.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m58 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5                         │ TransformerEncoder… │  1.3 M │ train │
+│[2m [0m[2m59 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m60 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m61 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m62 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m63 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m64 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m65 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m66 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m67 [0m[2m [0m│ net.text_embed_net.transformer.encoder.layers.5.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m68 [0m[2m [0m│ net.text_embed_net.transformer.encoder.norm                             │ LayerNorm           │    512 │ train │
+│[2m [0m[2m69 [0m[2m [0m│ net.text_embed_net.transformer.decoder                                  │ TransformerDecoder  │  9.5 M │ train │
+│[2m [0m[2m70 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers                           │ ModuleList          │  9.5 M │ train │
+│[2m [0m[2m71 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m72 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m73 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m74 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m75 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m76 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m77 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m78 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m79 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m80 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m81 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m82 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m83 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m84 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.0.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m85 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m86 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m87 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m88 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m89 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m90 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m91 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m92 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m93 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m94 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m95 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m96 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m97 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m98 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.1.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m99 [0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m100[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m101[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m102[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m103[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m104[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m105[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m106[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m107[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m108[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m109[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m110[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m111[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m112[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.2.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m113[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m114[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m115[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m116[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m117[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m118[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m119[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m120[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m121[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m122[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m123[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m124[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m125[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m126[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.3.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m127[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m128[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m129[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m130[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m131[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m132[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m133[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m134[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m135[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m136[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m137[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m138[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m139[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m140[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.4.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m141[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5                         │ TransformerDecoder… │  1.6 M │ train │
+│[2m [0m[2m142[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.self_attn               │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m143[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.self_attn.out_proj      │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m144[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.multihead_attn          │ MultiheadAttention  │  263 K │ train │
+│[2m [0m[2m145[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.multihead_attn.out_proj │ NonDynamicallyQuan… │ 65.8 K │ train │
+│[2m [0m[2m146[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.linear1                 │ Linear              │  526 K │ train │
+│[2m [0m[2m147[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.dropout                 │ Dropout             │      0 │ train │
+│[2m [0m[2m148[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.linear2                 │ Linear              │  524 K │ train │
+│[2m [0m[2m149[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.norm1                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m150[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.norm2                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m151[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.norm3                   │ LayerNorm           │    512 │ train │
+│[2m [0m[2m152[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.dropout1                │ Dropout             │      0 │ train │
+│[2m [0m[2m153[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.dropout2                │ Dropout             │      0 │ train │
+│[2m [0m[2m154[0m[2m [0m│ net.text_embed_net.transformer.decoder.layers.5.dropout3                │ Dropout             │      0 │ train │
+│[2m [0m[2m155[0m[2m [0m│ net.text_embed_net.transformer.decoder.norm                             │ LayerNorm           │    512 │ train │
+│[2m [0m[2m156[0m[2m [0m│ net.text_embed_net.out                                                  │ Linear              │  447 K │ train │
+│[2m [0m[2m157[0m[2m [0m│ net.image_embed_net                                                     │ InceptionNet        │ 25.6 M │ train │
+│[2m [0m[2m158[0m[2m [0m│ net.image_embed_net.inception_encoder                                   │ Inception3          │ 25.1 M │ train │
+│[2m [0m[2m159[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_1a_3x3                     │ BasicConv2d         │    928 │ train │
+│[2m [0m[2m160[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_1a_3x3.conv                │ Conv2d              │    864 │ train │
+│[2m [0m[2m161[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_1a_3x3.bn                  │ BatchNorm2d         │     64 │ train │
+│[2m [0m[2m162[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2a_3x3                     │ BasicConv2d         │  9.3 K │ train │
+│[2m [0m[2m163[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2a_3x3.conv                │ Conv2d              │  9.2 K │ train │
+│[2m [0m[2m164[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2a_3x3.bn                  │ BatchNorm2d         │     64 │ train │
+│[2m [0m[2m165[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2b_3x3                     │ BasicConv2d         │ 18.6 K │ train │
+│[2m [0m[2m166[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2b_3x3.conv                │ Conv2d              │ 18.4 K │ train │
+│[2m [0m[2m167[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_2b_3x3.bn                  │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m168[0m[2m [0m│ net.image_embed_net.inception_encoder.maxpool1                          │ MaxPool2d           │      0 │ train │
+│[2m [0m[2m169[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_3b_1x1                     │ BasicConv2d         │  5.3 K │ train │
+│[2m [0m[2m170[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_3b_1x1.conv                │ Conv2d              │  5.1 K │ train │
+│[2m [0m[2m171[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_3b_1x1.bn                  │ BatchNorm2d         │    160 │ train │
+│[2m [0m[2m172[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_4a_3x3                     │ BasicConv2d         │  138 K │ train │
+│[2m [0m[2m173[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_4a_3x3.conv                │ Conv2d              │  138 K │ train │
+│[2m [0m[2m174[0m[2m [0m│ net.image_embed_net.inception_encoder.Conv2d_4a_3x3.bn                  │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m175[0m[2m [0m│ net.image_embed_net.inception_encoder.maxpool2                          │ MaxPool2d           │      0 │ train │
+│[2m [0m[2m176[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b                          │ InceptionA          │  255 K │ train │
+│[2m [0m[2m177[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch1x1                │ BasicConv2d         │ 12.4 K │ train │
+│[2m [0m[2m178[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch1x1.conv           │ Conv2d              │ 12.3 K │ train │
+│[2m [0m[2m179[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch1x1.bn             │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m180[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_1              │ BasicConv2d         │  9.3 K │ train │
+│[2m [0m[2m181[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_1.conv         │ Conv2d              │  9.2 K │ train │
+│[2m [0m[2m182[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_1.bn           │ BatchNorm2d         │     96 │ train │
+│[2m [0m[2m183[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_2              │ BasicConv2d         │ 76.9 K │ train │
+│[2m [0m[2m184[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_2.conv         │ Conv2d              │ 76.8 K │ train │
+│[2m [0m[2m185[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch5x5_2.bn           │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m186[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_1           │ BasicConv2d         │ 12.4 K │ train │
+│[2m [0m[2m187[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_1.conv      │ Conv2d              │ 12.3 K │ train │
+│[2m [0m[2m188[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_1.bn        │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m189[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_2           │ BasicConv2d         │ 55.5 K │ train │
+│[2m [0m[2m190[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_2.conv      │ Conv2d              │ 55.3 K │ train │
+│[2m [0m[2m191[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_2.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m192[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_3           │ BasicConv2d         │ 83.1 K │ train │
+│[2m [0m[2m193[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_3.conv      │ Conv2d              │ 82.9 K │ train │
+│[2m [0m[2m194[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch3x3dbl_3.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m195[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch_pool              │ BasicConv2d         │  6.2 K │ train │
+│[2m [0m[2m196[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch_pool.conv         │ Conv2d              │  6.1 K │ train │
+│[2m [0m[2m197[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5b.branch_pool.bn           │ BatchNorm2d         │     64 │ train │
+│[2m [0m[2m198[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c                          │ InceptionA          │  277 K │ train │
+│[2m [0m[2m199[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch1x1                │ BasicConv2d         │ 16.5 K │ train │
+│[2m [0m[2m200[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch1x1.conv           │ Conv2d              │ 16.4 K │ train │
+│[2m [0m[2m201[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch1x1.bn             │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m202[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_1              │ BasicConv2d         │ 12.4 K │ train │
+│[2m [0m[2m203[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_1.conv         │ Conv2d              │ 12.3 K │ train │
+│[2m [0m[2m204[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_1.bn           │ BatchNorm2d         │     96 │ train │
+│[2m [0m[2m205[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_2              │ BasicConv2d         │ 76.9 K │ train │
+│[2m [0m[2m206[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_2.conv         │ Conv2d              │ 76.8 K │ train │
+│[2m [0m[2m207[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch5x5_2.bn           │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m208[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_1           │ BasicConv2d         │ 16.5 K │ train │
+│[2m [0m[2m209[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_1.conv      │ Conv2d              │ 16.4 K │ train │
+│[2m [0m[2m210[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_1.bn        │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m211[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_2           │ BasicConv2d         │ 55.5 K │ train │
+│[2m [0m[2m212[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_2.conv      │ Conv2d              │ 55.3 K │ train │
+│[2m [0m[2m213[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_2.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m214[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_3           │ BasicConv2d         │ 83.1 K │ train │
+│[2m [0m[2m215[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_3.conv      │ Conv2d              │ 82.9 K │ train │
+│[2m [0m[2m216[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch3x3dbl_3.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m217[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch_pool              │ BasicConv2d         │ 16.5 K │ train │
+│[2m [0m[2m218[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch_pool.conv         │ Conv2d              │ 16.4 K │ train │
+│[2m [0m[2m219[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5c.branch_pool.bn           │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m220[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d                          │ InceptionA          │  285 K │ train │
+│[2m [0m[2m221[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch1x1                │ BasicConv2d         │ 18.6 K │ train │
+│[2m [0m[2m222[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch1x1.conv           │ Conv2d              │ 18.4 K │ train │
+│[2m [0m[2m223[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch1x1.bn             │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m224[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_1              │ BasicConv2d         │ 13.9 K │ train │
+│[2m [0m[2m225[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_1.conv         │ Conv2d              │ 13.8 K │ train │
+│[2m [0m[2m226[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_1.bn           │ BatchNorm2d         │     96 │ train │
+│[2m [0m[2m227[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_2              │ BasicConv2d         │ 76.9 K │ train │
+│[2m [0m[2m228[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_2.conv         │ Conv2d              │ 76.8 K │ train │
+│[2m [0m[2m229[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch5x5_2.bn           │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m230[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_1           │ BasicConv2d         │ 18.6 K │ train │
+│[2m [0m[2m231[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_1.conv      │ Conv2d              │ 18.4 K │ train │
+│[2m [0m[2m232[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_1.bn        │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m233[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_2           │ BasicConv2d         │ 55.5 K │ train │
+│[2m [0m[2m234[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_2.conv      │ Conv2d              │ 55.3 K │ train │
+│[2m [0m[2m235[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_2.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m236[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_3           │ BasicConv2d         │ 83.1 K │ train │
+│[2m [0m[2m237[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_3.conv      │ Conv2d              │ 82.9 K │ train │
+│[2m [0m[2m238[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch3x3dbl_3.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m239[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch_pool              │ BasicConv2d         │ 18.6 K │ train │
+│[2m [0m[2m240[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch_pool.conv         │ Conv2d              │ 18.4 K │ train │
+│[2m [0m[2m241[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_5d.branch_pool.bn           │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m242[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a                          │ InceptionB          │  1.2 M │ train │
+│[2m [0m[2m243[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3                │ BasicConv2d         │  996 K │ train │
+│[2m [0m[2m244[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3.conv           │ Conv2d              │  995 K │ train │
+│[2m [0m[2m245[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3.bn             │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m246[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_1           │ BasicConv2d         │ 18.6 K │ train │
+│[2m [0m[2m247[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_1.conv      │ Conv2d              │ 18.4 K │ train │
+│[2m [0m[2m248[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_1.bn        │ BatchNorm2d         │    128 │ train │
+│[2m [0m[2m249[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_2           │ BasicConv2d         │ 55.5 K │ train │
+│[2m [0m[2m250[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_2.conv      │ Conv2d              │ 55.3 K │ train │
+│[2m [0m[2m251[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_2.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m252[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_3           │ BasicConv2d         │ 83.1 K │ train │
+│[2m [0m[2m253[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_3.conv      │ Conv2d              │ 82.9 K │ train │
+│[2m [0m[2m254[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6a.branch3x3dbl_3.bn        │ BatchNorm2d         │    192 │ train │
+│[2m [0m[2m255[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b                          │ InceptionC          │  1.3 M │ train │
+│[2m [0m[2m256[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch1x1                │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m257[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch1x1.conv           │ Conv2d              │  147 K │ train │
+│[2m [0m[2m258[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch1x1.bn             │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m259[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_1              │ BasicConv2d         │ 98.6 K │ train │
+│[2m [0m[2m260[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_1.conv         │ Conv2d              │ 98.3 K │ train │
+│[2m [0m[2m261[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_1.bn           │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m262[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_2              │ BasicConv2d         │  114 K │ train │
+│[2m [0m[2m263[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_2.conv         │ Conv2d              │  114 K │ train │
+│[2m [0m[2m264[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_2.bn           │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m265[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_3              │ BasicConv2d         │  172 K │ train │
+│[2m [0m[2m266[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_3.conv         │ Conv2d              │  172 K │ train │
+│[2m [0m[2m267[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7_3.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m268[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_1           │ BasicConv2d         │ 98.6 K │ train │
+│[2m [0m[2m269[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_1.conv      │ Conv2d              │ 98.3 K │ train │
+│[2m [0m[2m270[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_1.bn        │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m271[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_2           │ BasicConv2d         │  114 K │ train │
+│[2m [0m[2m272[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_2.conv      │ Conv2d              │  114 K │ train │
+│[2m [0m[2m273[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_2.bn        │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m274[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_3           │ BasicConv2d         │  114 K │ train │
+│[2m [0m[2m275[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_3.conv      │ Conv2d              │  114 K │ train │
+│[2m [0m[2m276[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_3.bn        │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m277[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_4           │ BasicConv2d         │  114 K │ train │
+│[2m [0m[2m278[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_4.conv      │ Conv2d              │  114 K │ train │
+│[2m [0m[2m279[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_4.bn        │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m280[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_5           │ BasicConv2d         │  172 K │ train │
+│[2m [0m[2m281[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_5.conv      │ Conv2d              │  172 K │ train │
+│[2m [0m[2m282[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch7x7dbl_5.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m283[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch_pool              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m284[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch_pool.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m285[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6b.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m286[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c                          │ InceptionC          │  1.7 M │ train │
+│[2m [0m[2m287[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch1x1                │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m288[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch1x1.conv           │ Conv2d              │  147 K │ train │
+│[2m [0m[2m289[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch1x1.bn             │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m290[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_1              │ BasicConv2d         │  123 K │ train │
+│[2m [0m[2m291[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_1.conv         │ Conv2d              │  122 K │ train │
+│[2m [0m[2m292[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_1.bn           │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m293[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_2              │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m294[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_2.conv         │ Conv2d              │  179 K │ train │
+│[2m [0m[2m295[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_2.bn           │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m296[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_3              │ BasicConv2d         │  215 K │ train │
+│[2m [0m[2m297[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_3.conv         │ Conv2d              │  215 K │ train │
+│[2m [0m[2m298[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7_3.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m299[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_1           │ BasicConv2d         │  123 K │ train │
+│[2m [0m[2m300[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_1.conv      │ Conv2d              │  122 K │ train │
+│[2m [0m[2m301[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_1.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m302[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_2           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m303[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_2.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m304[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_2.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m305[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_3           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m306[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_3.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m307[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_3.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m308[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_4           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m309[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_4.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m310[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_4.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m311[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_5           │ BasicConv2d         │  215 K │ train │
+│[2m [0m[2m312[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_5.conv      │ Conv2d              │  215 K │ train │
+│[2m [0m[2m313[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch7x7dbl_5.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m314[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch_pool              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m315[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch_pool.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m316[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6c.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m317[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d                          │ InceptionC          │  1.7 M │ train │
+│[2m [0m[2m318[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch1x1                │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m319[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch1x1.conv           │ Conv2d              │  147 K │ train │
+│[2m [0m[2m320[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch1x1.bn             │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m321[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_1              │ BasicConv2d         │  123 K │ train │
+│[2m [0m[2m322[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_1.conv         │ Conv2d              │  122 K │ train │
+│[2m [0m[2m323[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_1.bn           │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m324[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_2              │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m325[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_2.conv         │ Conv2d              │  179 K │ train │
+│[2m [0m[2m326[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_2.bn           │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m327[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_3              │ BasicConv2d         │  215 K │ train │
+│[2m [0m[2m328[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_3.conv         │ Conv2d              │  215 K │ train │
+│[2m [0m[2m329[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7_3.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m330[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_1           │ BasicConv2d         │  123 K │ train │
+│[2m [0m[2m331[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_1.conv      │ Conv2d              │  122 K │ train │
+│[2m [0m[2m332[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_1.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m333[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_2           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m334[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_2.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m335[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_2.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m336[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_3           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m337[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_3.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m338[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_3.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m339[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_4           │ BasicConv2d         │  179 K │ train │
+│[2m [0m[2m340[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_4.conv      │ Conv2d              │  179 K │ train │
+│[2m [0m[2m341[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_4.bn        │ BatchNorm2d         │    320 │ train │
+│[2m [0m[2m342[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_5           │ BasicConv2d         │  215 K │ train │
+│[2m [0m[2m343[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_5.conv      │ Conv2d              │  215 K │ train │
+│[2m [0m[2m344[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch7x7dbl_5.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m345[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch_pool              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m346[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch_pool.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m347[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6d.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m348[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e                          │ InceptionC          │  2.1 M │ train │
+│[2m [0m[2m349[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch1x1                │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m350[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch1x1.conv           │ Conv2d              │  147 K │ train │
+│[2m [0m[2m351[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch1x1.bn             │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m352[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_1              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m353[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_1.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m354[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_1.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m355[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_2              │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m356[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_2.conv         │ Conv2d              │  258 K │ train │
+│[2m [0m[2m357[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_2.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m358[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_3              │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m359[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_3.conv         │ Conv2d              │  258 K │ train │
+│[2m [0m[2m360[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7_3.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m361[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_1           │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m362[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_1.conv      │ Conv2d              │  147 K │ train │
+│[2m [0m[2m363[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_1.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m364[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_2           │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m365[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_2.conv      │ Conv2d              │  258 K │ train │
+│[2m [0m[2m366[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_2.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m367[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_3           │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m368[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_3.conv      │ Conv2d              │  258 K │ train │
+│[2m [0m[2m369[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_3.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m370[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_4           │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m371[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_4.conv      │ Conv2d              │  258 K │ train │
+│[2m [0m[2m372[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_4.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m373[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_5           │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m374[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_5.conv      │ Conv2d              │  258 K │ train │
+│[2m [0m[2m375[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch7x7dbl_5.bn        │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m376[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch_pool              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m377[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch_pool.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m378[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_6e.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m379[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits                         │ InceptionAux        │  3.3 M │ train │
+│[2m [0m[2m380[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv0                   │ BasicConv2d         │ 98.6 K │ train │
+│[2m [0m[2m381[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv0.conv              │ Conv2d              │ 98.3 K │ train │
+│[2m [0m[2m382[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv0.bn                │ BatchNorm2d         │    256 │ train │
+│[2m [0m[2m383[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv1                   │ BasicConv2d         │  2.5 M │ train │
+│[2m [0m[2m384[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv1.conv              │ Conv2d              │  2.5 M │ train │
+│[2m [0m[2m385[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.conv1.bn                │ BatchNorm2d         │  1.5 K │ train │
+│[2m [0m[2m386[0m[2m [0m│ net.image_embed_net.inception_encoder.AuxLogits.fc                      │ Linear              │  769 K │ train │
+│[2m [0m[2m387[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a                          │ InceptionD          │  1.7 M │ train │
+│[2m [0m[2m388[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_1              │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m389[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_1.conv         │ Conv2d              │  147 K │ train │
+│[2m [0m[2m390[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_1.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m391[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_2              │ BasicConv2d         │  553 K │ train │
+│[2m [0m[2m392[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_2.conv         │ Conv2d              │  552 K │ train │
+│[2m [0m[2m393[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch3x3_2.bn           │ BatchNorm2d         │    640 │ train │
+│[2m [0m[2m394[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_1            │ BasicConv2d         │  147 K │ train │
+│[2m [0m[2m395[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_1.conv       │ Conv2d              │  147 K │ train │
+│[2m [0m[2m396[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_1.bn         │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m397[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_2            │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m398[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_2.conv       │ Conv2d              │  258 K │ train │
+│[2m [0m[2m399[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_2.bn         │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m400[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_3            │ BasicConv2d         │  258 K │ train │
+│[2m [0m[2m401[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_3.conv       │ Conv2d              │  258 K │ train │
+│[2m [0m[2m402[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_3.bn         │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m403[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_4            │ BasicConv2d         │  332 K │ train │
+│[2m [0m[2m404[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_4.conv       │ Conv2d              │  331 K │ train │
+│[2m [0m[2m405[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7a.branch7x7x3_4.bn         │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m406[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b                          │ InceptionE          │  5.0 M │ train │
+│[2m [0m[2m407[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch1x1                │ BasicConv2d         │  410 K │ train │
+│[2m [0m[2m408[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch1x1.conv           │ Conv2d              │  409 K │ train │
+│[2m [0m[2m409[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch1x1.bn             │ BatchNorm2d         │    640 │ train │
+│[2m [0m[2m410[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_1              │ BasicConv2d         │  492 K │ train │
+│[2m [0m[2m411[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_1.conv         │ Conv2d              │  491 K │ train │
+│[2m [0m[2m412[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_1.bn           │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m413[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2a             │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m414[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2a.conv        │ Conv2d              │  442 K │ train │
+│[2m [0m[2m415[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2a.bn          │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m416[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2b             │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m417[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2b.conv        │ Conv2d              │  442 K │ train │
+│[2m [0m[2m418[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3_2b.bn          │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m419[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_1           │ BasicConv2d         │  574 K │ train │
+│[2m [0m[2m420[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_1.conv      │ Conv2d              │  573 K │ train │
+│[2m [0m[2m421[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_1.bn        │ BatchNorm2d         │    896 │ train │
+│[2m [0m[2m422[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_2           │ BasicConv2d         │  1.5 M │ train │
+│[2m [0m[2m423[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_2.conv      │ Conv2d              │  1.5 M │ train │
+│[2m [0m[2m424[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_2.bn        │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m425[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3a          │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m426[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3a.conv     │ Conv2d              │  442 K │ train │
+│[2m [0m[2m427[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3a.bn       │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m428[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3b          │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m429[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3b.conv     │ Conv2d              │  442 K │ train │
+│[2m [0m[2m430[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch3x3dbl_3b.bn       │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m431[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch_pool              │ BasicConv2d         │  246 K │ train │
+│[2m [0m[2m432[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch_pool.conv         │ Conv2d              │  245 K │ train │
+│[2m [0m[2m433[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7b.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m434[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c                          │ InceptionE          │  6.1 M │ train │
+│[2m [0m[2m435[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch1x1                │ BasicConv2d         │  656 K │ train │
+│[2m [0m[2m436[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch1x1.conv           │ Conv2d              │  655 K │ train │
+│[2m [0m[2m437[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch1x1.bn             │ BatchNorm2d         │    640 │ train │
+│[2m [0m[2m438[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_1              │ BasicConv2d         │  787 K │ train │
+│[2m [0m[2m439[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_1.conv         │ Conv2d              │  786 K │ train │
+│[2m [0m[2m440[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_1.bn           │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m441[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2a             │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m442[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2a.conv        │ Conv2d              │  442 K │ train │
+│[2m [0m[2m443[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2a.bn          │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m444[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2b             │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m445[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2b.conv        │ Conv2d              │  442 K │ train │
+│[2m [0m[2m446[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3_2b.bn          │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m447[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_1           │ BasicConv2d         │  918 K │ train │
+│[2m [0m[2m448[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_1.conv      │ Conv2d              │  917 K │ train │
+│[2m [0m[2m449[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_1.bn        │ BatchNorm2d         │    896 │ train │
+│[2m [0m[2m450[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_2           │ BasicConv2d         │  1.5 M │ train │
+│[2m [0m[2m451[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_2.conv      │ Conv2d              │  1.5 M │ train │
+│[2m [0m[2m452[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_2.bn        │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m453[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3a          │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m454[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3a.conv     │ Conv2d              │  442 K │ train │
+│[2m [0m[2m455[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3a.bn       │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m456[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3b          │ BasicConv2d         │  443 K │ train │
+│[2m [0m[2m457[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3b.conv     │ Conv2d              │  442 K │ train │
+│[2m [0m[2m458[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch3x3dbl_3b.bn       │ BatchNorm2d         │    768 │ train │
+│[2m [0m[2m459[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch_pool              │ BasicConv2d         │  393 K │ train │
+│[2m [0m[2m460[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch_pool.conv         │ Conv2d              │  393 K │ train │
+│[2m [0m[2m461[0m[2m [0m│ net.image_embed_net.inception_encoder.Mixed_7c.branch_pool.bn           │ BatchNorm2d         │    384 │ train │
+│[2m [0m[2m462[0m[2m [0m│ net.image_embed_net.inception_encoder.avgpool                           │ AdaptiveAvgPool2d   │      0 │ train │
+│[2m [0m[2m463[0m[2m [0m│ net.image_embed_net.inception_encoder.dropout                           │ Dropout             │      0 │ train │
+│[2m [0m[2m464[0m[2m [0m│ net.image_embed_net.inception_encoder.fc                                │ Identity            │      0 │ train │
+│[2m [0m[2m465[0m[2m [0m│ net.image_embed_net.linear                                              │ Linear              │  524 K │ train │
+│[2m [0m[2m466[0m[2m [0m│ net.image_embed_net.relu                                                │ ReLU                │      0 │ train │
+│[2m [0m[2m467[0m[2m [0m│ net.linear_1                                                            │ Linear              │ 65.8 K │ train │
+│[2m [0m[2m468[0m[2m [0m│ net.relu                                                                │ ReLU                │      0 │ train │
+│[2m [0m[2m469[0m[2m [0m│ net.linear_2                                                            │ Linear              │  447 K │ train │
+│[2m [0m[2m470[0m[2m [0m│ criterion                                                               │ CrossEntropyLoss    │      0 │ train │
+│[2m [0m[2m471[0m[2m [0m│ train_acc                                                               │ MulticlassAccuracy  │      0 │ train │
+│[2m [0m[2m472[0m[2m [0m│ val_acc                                                                 │ MulticlassAccuracy  │      0 │ train │
+│[2m [0m[2m473[0m[2m [0m│ test_acc                                                                │ MulticlassAccuracy  │      0 │ train │
+│[2m [0m[2m474[0m[2m [0m│ test_bleu1                                                              │ BLEUScore           │      0 │ train │
+│[2m [0m[2m475[0m[2m [0m│ test_bleu2                                                              │ BLEUScore           │      0 │ train │
+│[2m [0m[2m476[0m[2m [0m│ test_bleu3                                                              │ BLEUScore           │      0 │ train │
+│[2m [0m[2m477[0m[2m [0m│ test_bleu4                                                              │ BLEUScore           │      0 │ train │
+│[2m [0m[2m478[0m[2m [0m│ train_loss                                                              │ MeanMetric          │      0 │ train │
+│[2m [0m[2m479[0m[2m [0m│ val_loss                                                                │ MeanMetric          │      0 │ train │
+│[2m [0m[2m480[0m[2m [0m│ test_loss                                                               │ MeanMetric          │      0 │ train │
+│[2m [0m[2m481[0m[2m [0m│ val_acc_best                                                            │ MaxMetric           │      0 │ train │
+└─────┴─────────────────────────────────────────────────────────────────────────┴─────────────────────┴────────┴───────┘
+[1mTrainable params[0m: 19.3 M
+[1mNon-trainable params[0m: 25.1 M
+[1mTotal params[0m: 44.4 M
+[1mTotal estimated model params size (MB)[0m: 177
+[1mModules in train mode[0m: 482
+[1mModules in eval mode[0m: 0
+[2KC:\anaconda3\envs\image-caption\lib\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:419: Consider
+setting `persistent_workers=True` in 'val_dataloader' to speed up the dataloader worker initialization.
+[2KC:\anaconda3\envs\image-caption\lib\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:419: Consider  0:00:00[0m [38;5;249m2.92it/s[0m  [0m [38;5;249m0.00it/s[0m  
+setting `persistent_workers=True` in 'train_dataloader' to speed up the dataloader worker initialization.
+[2K[37mEpoch 0/29[0m [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [37m0/3237[0m [38;5;245m0:00:00 • -:--:--[0m [38;5;249m0.00it/s[0m [37mv_num: 5own val/loss: 7.696 val/acc:  [0m
+[2K[1A[2K[37mEpoch 0/29[0m [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [37m1/3237[0m [38;5;245m0:00:01 • -:--:--[0m [38;5;249m0.00it/s[0m [37mv_num: 5own val/loss: 7.696 val/acc:  [0m
+[2K[37mEpoch 0/29[0m [38;2;98;6;224m━━━━━━━[0m[38;5;237m╺[0m[38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [37m582/3237[0m [38;5;245m0:04:08 • 0:18:42[0m [38;5;249m2.37it/s[0m [37mv_num: 5own[0mn[0m

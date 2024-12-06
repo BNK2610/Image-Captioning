@@ -1,0 +1,9 @@
+{"time":"2024-12-07T02:45:10.2548826+07:00","level":"INFO","msg":"using version","core version":"0.19.0"}
+{"time":"2024-12-07T02:45:10.2548826+07:00","level":"INFO","msg":"created symlink","path":"C:\\Image-Captioning\\logs\\train\\runs\\2024-12-07_02-45-07\\wandb\\offline-run-20241207_024510-ncwogh7e\\logs\\debug-core.log"}
+{"time":"2024-12-07T02:45:10.3731307+07:00","level":"INFO","msg":"created new stream","id":"ncwogh7e"}
+{"time":"2024-12-07T02:45:10.3731307+07:00","level":"INFO","msg":"stream: started","id":"ncwogh7e"}
+{"time":"2024-12-07T02:45:10.3736408+07:00","level":"INFO","msg":"writer: Do: started","stream_id":"ncwogh7e"}
+{"time":"2024-12-07T02:45:10.3736859+07:00","level":"INFO","msg":"sender: started","stream_id":"ncwogh7e"}
+{"time":"2024-12-07T02:45:10.3736859+07:00","level":"INFO","msg":"handler: started","stream_id":"ncwogh7e"}
+{"time":"2024-12-07T02:45:10.3764685+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-07T02:45:20.3770021+07:00","level":"ERROR","msg":"monitor: disk: error sampling metrics: Incorrect function."}

@@ -1,0 +1,47 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "CPython 3.10.15",
+  "startedAt": "2024-12-06T18:52:11.377740Z",
+  "args": [
+    "experiment=transformer",
+    "trainer.devices=1"
+  ],
+  "program": "C:\\Image-Captioning\\src\\train.py",
+  "codePath": "src\\train.py",
+  "git": {
+    "remote": "https://github.com/BNK2610/Image-Captioning.git",
+    "commit": "a9c1f8e5eb1f407a2a1947d672b67ee087860381"
+  },
+  "email": "22022605@vnu.edu.vn",
+  "root": "C:\\Image-Captioning\\logs\\train\\runs\\2024-12-07_01-52-05",
+  "host": "MAY-018",
+  "username": "Administrator",
+  "executable": "C:\\anaconda3\\envs\\image-caption\\python.exe",
+  "codePathLocal": "src\\train.py",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "NVIDIA GeForce RTX 3060",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "274882097152",
+      "used": "92094566400"
+    }
+  },
+  "memory": {
+    "total": "16985645056"
+  },
+  "cpu": {
+    "count": 6,
+    "countLogical": 12
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3060",
+      "memoryTotal": "12884901888",
+      "cudaCores": 3584,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.4"
+}
